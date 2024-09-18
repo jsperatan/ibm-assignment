@@ -33,4 +33,4 @@ def get_users_by_id(id: int):
     return jsonify({"error": "User does not exist"}), 404
 
 if __name__ == '__main__':
-   app.run(port=5656)
+    app.run(host='0.0.0.0', port=5656)
