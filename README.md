@@ -25,7 +25,7 @@
 5. Run application: `python3 index.py` or `py index.py`
 6. Access http://127.0.0.1:5656/users/all or http://127.0.0.1:5656/users/<id> from your web browser - Alternatively you can also use cURL: `curl --location 'http://localhost:5656/users/all'` or `curl --location 'http://localhost:5656/users/<id>'`
 
-## Running from Docker
+## Build and Run using Docker
 
 1. Install Docker
 2. Clone and navigate to Git Repository
@@ -33,3 +33,11 @@
 4. Run Docker container: `sudo docker run -p 127.0.0.1:5656:5656 -d ibm-assignment/web-app`
    - Assume that endpoint is only accessible from localhost. To expose the application to external networks, use: `sudo docker run -p 5656:5656 -d ibm-assignment/web-app`
 5. Access endpoint via cURL: `curl --location 'http://localhost:5656/users/all'` or `curl --location 'http://localhost:5656/users/<id>'`
+
+## Pull from Docker Hub
+1. Install Docker
+2. Pull Docker image: ```sudo docker pull projectquartz/ibm-assignment:latest```
+3. Run Docker container: `sudo docker run -p 127.0.0.1:5656:5656 -d projectquartz/ibm-assignment:latest`
+   - Assume that endpoint is only accessible from localhost. To expose the application to external networks, use: `sudo docker run -p 5656:5656 -d projectquartz/ibm-assignment:latest`
+4. Access endpoint via cURL: `curl --location 'http://localhost:5656/users/all'` or `curl --location 'http://localhost:5656/users/<id>'`
+
