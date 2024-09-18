@@ -1,8 +1,13 @@
-# IBM Assignment - Development 
+# IBM Assignment - Development
+
 ## Dependancies
+
 - Python 3.12.5 (If running from host machine)
 - Flask (If running from host machine)
+- Docker (If running from Docker)
+
 ## Web App Tasks Summary
+
 1. Call https://jsonplaceholder.typicode.com/users to get list of users
 2. Format response by including only relevant attributes (id, names, usernames, email and company_names)
 3. Store formatted response into a list
@@ -10,10 +15,21 @@
 4. Add handler for /users/all
 5. Add handler for /users/<id>
    - As mentioned before, we do not need to do any searching as specific ids can be directly accessed from the list index (users id = index + 1)
+
 ## Running from Host Machine
-1. Install Python 3.12.5
-2. OPTIONAL: Activate virtual environment
-3. Install required packages: pip install -r requirements.txt
-4. Run application: py index.py
-5. Access http://127.0.0.1:5656/users/all or http://127.0.0.1:5656/users/<id> from your web browser
-  - Alternatively you can also use CURL: curl --location 'http://localhost:5656/users/all' or curl --location 'http://localhost:5656/users/<id>'
+
+1. Install Python
+2. Clone and navigate to Git Repository
+3. _OPTIONAL_: Activate virtual environment
+4. Install required packages: `pip install -r requirements.txt`
+5. Run application: `python3 index.py` or `py index.py`
+6. Access http://127.0.0.1:5656/users/all or http://127.0.0.1:5656/users/<id> from your web browser - Alternatively you can also use cURL: `curl --location 'http://localhost:5656/users/all'` or `curl --location 'http://localhost:5656/users/<id>'`
+
+## Running from Docker
+
+1. Install Docker
+2. Clone and navigate to Git Repository
+3. Build Docker image: `sudo docker build . -t ibm-assignment/web-app`
+4. Run Docker container: `sudo docker run -p 127.0.0.1:5656:5656 -d ibm-assignment/web-app`
+   - Assume that endpoint is only accessible from localhost. To expose the application to external networks, use: `sudo docker run -p 5656:5656 -d ibm-assignment/web-app`
+5. Access endpoint via cURL: `curl --location 'http://localhost:5656/users/all'` or `curl --location 'http://localhost:5656/users/<id>'`
