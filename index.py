@@ -28,8 +28,8 @@ def get_users():
 
 @app.route('/users/<int:id>', methods=['GET'])
 def get_users_by_id(id: int):
-    if (id > 0 and id <= len(formatted_users)):
-        return jsonify(formatted_users[id-1])
+    if (id > 0 and id <= len(users)):
+        return jsonify(users[id-1])
     return jsonify({"error": "User does not exist"}), 404
 
 if __name__ == '__main__':
