@@ -3,6 +3,7 @@ import json
 import requests
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False #ensure that attributes are not sorted
 
 #get JSON data
 url = "https://jsonplaceholder.typicode.com/users"
@@ -21,4 +22,15 @@ for user in users:
                     'company_name': user['company']['name']}
     formatted_users.append(user_details)
 
-print(formatted_users)
+@app.route('/users/all', methods=['GET'])
+def get_users():
+    return jsonify(formatted_users)
+
+@app.route('/users/<int:id>', methods=['GET'])
+def get_users_by_id(id: int):
+    if (id > 0 and id <= len(formatted_users)):
+        return jsonify(formatted_users[id-1])
+    return jsonify({"error": "User does not exist"}), 404
+
+if __name__ == '__main__':
+   app.run(port=5656)
